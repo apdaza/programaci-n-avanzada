@@ -3,13 +3,13 @@ package objetos.java.instrumentos;
 public class Bajo implements Instrumento{
     @Override
     public void afinar() {
-        System.out.println("Tocando bajo");
+        System.out.println("Afinando bajo");
 
     }
 
     @Override
     public void tocar() {
-        System.out.println("Afinando bajo");
+        System.out.println("Tocando bajo");
 
     }
 

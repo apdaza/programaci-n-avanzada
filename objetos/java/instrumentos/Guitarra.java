@@ -4,13 +4,13 @@ public class Guitarra implements Instrumento {
 
     @Override
     public void afinar() {
-        System.out.println("Tocando guitarra");
+        System.out.println("Afinando guitarra");
 
     }
 
     @Override
     public void tocar() {
-        System.out.println("Afinando guitarra");
+        System.out.println("Tocando guitarra");
 
     }
 
