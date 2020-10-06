@@ -1,0 +1,22 @@
+body {
+    font-size: 1.5em;
+}
+
+h1 {
+    color:red;
+    font-weight: bolder;
+    font-size: 2em;
+}
+
+section h1 {
+    color: #00ff00;
+}
+
+p {
+    color:#00aaff;
+}
+nav {
+    background-color: darkolivegreen;
+    margin: 1em;
+    padding: 2em;
+}
