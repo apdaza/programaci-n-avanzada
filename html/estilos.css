@@ -20,3 +20,14 @@ nav {
     margin: 1em;
     padding: 2em;
 }
+
+table {
+    border: 1px solid #00aaff;
+    border-radius: 15px;
+}
+
+.resaltado {
+    background-color: cadetblue;
+    color: #ffffff;
+    font-weight: bold;
+}
