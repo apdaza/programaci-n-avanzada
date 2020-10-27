@@ -16,7 +16,7 @@ def uploader_file():
       for x in lista:
           x[2] = x[2][:-1]
           if x[2]=='+':
-              print "suma"
+              print("suma")
               r = int(x[0]) + int(x[1])
           elif x[2]=='-':
               r = int(x[0]) - int(x[1])
@@ -28,7 +28,7 @@ def uploader_file():
               r = 0
           resultados.append(x + [r])
 
-      print len(lista)
+      print(len(lista))
       return render_template('showall.html', msg = "file loaded successfully", rows = resultados)
 
 if __name__ == '__main__':

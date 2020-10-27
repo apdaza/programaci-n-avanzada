@@ -12,6 +12,7 @@ class tarean (db.Model):
    nombre = db.Column(db.String(100))
    fecha = db.Column(db.String(15))
    url = db.Column(db.String(200))
+   
    descripcion = db.Column(db.String(250))
 
    def __init__(self, name, city, addr,pin):

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 @app.route('/upload')
@@ -12,8 +12,8 @@ def uploader_file():
       f = request.files['file']
       f.save(secure_filename(f.filename))
       lista = [x.split(',') for x in open(f.filename).readlines()]
-      print len(lista)
-      return render_template('showall.html', msg = "file loaded successfully", rows = lista[slice(1, 7, 2)])
+      print(len(lista))
+      return render_template('showall.html', msg = "file loaded successfully", rows = lista)
 
 if __name__ == '__main__':
    app.run(debug = True)
