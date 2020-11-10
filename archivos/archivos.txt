@@ -1,0 +1,2 @@
+Un ejemplo de archivos para manejar con python
+Ejemplificando el manejo de los flujos de texto desde el archivo
