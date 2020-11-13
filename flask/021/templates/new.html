@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Students</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
-</head>
-<body>
-   <nav>
-      <a href = "{{ url_for('show_all') }}">Show All Student</a> |
-      <a href = "{{ url_for('new') }}">Add Student</a>
-   </nav>
-      <section>
-      <h3>Students</h3>
-
-      {%- for category, message in get_flashed_messages(with_categories = true) %}
-         <div class = "alert alert-danger">
+   <head>
+   <title>Students</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
+   </head>
+   <body>
+      <nav>
+         <a href = "{{ url_for('show_all') }}">Show All Student</a> |
+         <a href = "{{ url_for('new') }}">Add Student</a>
+      </nav>
+      <aside>
+         {%- for message in get_flashed_messages() %}
             {{ message }}
-         </div>
-      {%- endfor %}
+         {%- endfor %}
+      </aside>
+      <section>
+         <h1>Students</h1>
 
-      <form action = "{{ request.path }}" method = "post">
-         <label for = "name">Name</label>
-         <input type = "text" name = "name" placeholder = "Name" /><br>
-         <label for = "email">City</label>
-         <input type = "text" name = "city" placeholder = "city" /><br>
-         <label for = "addr">addr</label>
-         <textarea name = "addr" placeholder = "addr"></textarea><br>
-         <label for = "PIN">PIN</label>
-         <input type = "text" name = "pin" placeholder = "pin" /><br>
-         <input type = "submit" value = "Submit" />
-      </form>
-    </section>
+         
+
+         <form action = "{{ request.path }}" method = "post">
+            <label for = "name">Nombre</label>
+            <input type = "text" name = "name" placeholder = "Name" /><br>
+            <label for = "email">Ciudad</label>
+            <input type = "text" name = "city" placeholder = "city" /><br>
+            <label for = "addr">Dirección</label>
+            <textarea name = "addr" placeholder = "addr"></textarea><br>
+            <label for = "PIN">Código</label>
+            <input type = "text" name = "pin" placeholder = "pin" /><br>
+            <input type = "submit" value = "Submit" />
+         </form>
+      </section>
    </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
    <head>
-     <title>Students</title>
+     <title>Estudiantes</title>
      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
    </head>
    <body>
@@ -16,16 +16,16 @@
         {%- endfor %}
       </aside>
       <section>      
-        <h3>Students</h3>
+        <h1>Students</h1>
 
         <table>
            <thead>
               <tr>
-                 <th>Name</th>
-                 <th>City</th>
-                 <th>Address</th>
-                 <th>Pin</th>
-                 <th colspan="2">Acctions</th>
+                 <th>Nombre</th>
+                 <th>Ciudad</th>
+                 <th>Dirección</th>
+                 <th>Código</th>
+                 <th colspan="4">Acciones</th>
               </tr>
            </thead>
 
@@ -38,16 +38,28 @@
                     <td>{{ student.pin }}</td>
                     <td>
                       <form method="POST" action="/update" style="display: inline">
-                        <input type="hidden" value="{{student.name}}" name="oldname">
-                        <input type="submit" value="Update">
+                        <input type="hidden" value="{{student.id}}" name="id">
+                        <input type="submit" value="Actualizar" class="accion">
                       </form>
                     </td>
                     <td>
                       <form method="POST" action="/delete" style="display: inline">
-                        <input type="hidden" value="{{student.name}}" name="oldname">
-                        <input type="submit" value="Delete">
+                        <input type="hidden" value="{{student.id}}" name="id">
+                        <input type="submit" value="Eliminar" class="accion">
                       </form>
                     </td>
+                    <td>
+                     <form method="POST" action="/grades" style="display: inline">
+                       <input type="hidden" value="{{student.id}}" name="id">
+                       <input type="submit" value="Ver notas" class="accion">
+                     </form>
+                   </td>
+                   <td>
+                     <form method="GET" action="/new_grade" style="display: inline">
+                       <input type="hidden" value="{{student.id}}" name="id">
+                       <input type="submit" value="Nueva nota" class="accion">
+                     </form>
+                   </td>
                  </tr>
               {% endfor %}
            </tbody>

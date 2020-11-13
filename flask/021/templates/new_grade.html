@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/default.css') }}">
+</head>
+  <body>
+     <nav>
+        <a href = "{{ url_for('show_all') }}">Show All Student</a> |
+        <a href = "{{ url_for('new') }}">Add Student</a>
+     </nav>
+     <aside>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+    </aside>
+     <section>
+       <h3>Student grades</h3>
+      <form action = "/new_grade" method = "post">
+        <input type = "text" name = "id" value = "{{ id }}" /><br>
+         <label for = "grade">Nota</label>
+         <input type = "number" name = "grade"/><br>
+         <input type = "submit" value = "Submit" />
+      </form>
+    </section>
+   </body>
+</html>
