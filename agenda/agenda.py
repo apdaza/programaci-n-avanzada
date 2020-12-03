@@ -26,7 +26,7 @@ def ver_todos():
                     "LEFT JOIN contactos as con on (usu.usu_id = con.usu_id) " +
                     "LEFT JOIN citas as cit on (con.con_id = cit.con_id)")
     data = cursor.fetchall()
-    return render_template('usuarios.html', usuarios = data )
+    return render_template('todos.html', citas = data )
 
 if __name__ == '__main__':
     app.run(debug=True)
