@@ -13,29 +13,44 @@ class producto(db.Model):
     producto_valor = db.Column(db.Integer)
     producto_cantidad = db.Column(db.Integer)
     
-    def __init__(self, nombre, valor, cantidad):
-        self.producto_nombre = nombre
-        self.producto_valor = valor
-        self.producto_cantidad = cantidad
+    def __init__(self, datos):
+        self.producto_nombre = datos["nombre"]
+        self.producto_valor = datos["valor"]
+        self.producto_cantidad = datos["cantidad"]
 
 @app.route("/")
 def principal():
-    return producto.query.all()
+    return render_template("lista.html", productos = producto.query.all())
 
-@app.route("/agregar/<nombre>")
-def agregar(nombre):
-    datos = {"producto_nombre": nombre, 
-             "producto_cantidad": 100,
-             "producto_valor": 10
+@app.route("/agregar/<nombre>/<int:valor>/<int:cantidad>")
+def agregar(nombre, valor, cantidad):
+    datos = {"nombre": nombre, 
+             "cantidad": cantidad,
+             "valor": valor
     }
 
     p = producto(datos)
     db.session.add(p)
     db.session.commit()
+    return render_template("lista.html", productos = producto.query.all())
+
+@app.route("/sacar/<int:id>/<int:cantidad>")
+def sacar(id, cantidad):
+    p = producto.query.filter_by(id=id).first()
+    p.producto_cantidad = p.producto_cantidad - cantidad
+    db.session.commit()
+    return render_template("lista.html", productos = producto.query.all())
+
+@app.route("/eliminar/<int:id>")
+def eliminar(id):
+    p = producto.query.filter_by(id=id).first()
+    db.session.delete(p)
+    db.session.commit()
+    return render_template("lista.html", productos = producto.query.all())
 
 if __name__ == "__main__":
     db.create_all()
-    app.run()
+    app.run(debug=True)
 
 
 
